@@ -17,8 +17,9 @@ $susy: (
 );
 
 $blue: #069E97;
-	$dark-blue: darken(#069E97, 5%);
+	$dark-blue: darken($blue, 5%);
 $cream: #FFD38C;
+	$dark-cream: darken($cream, 5%);
 $red: #E62222;
 $orange: #F57B29;
 	$dark-orange: darken(#F57B29, 7%);
@@ -62,13 +63,56 @@ body {
 img {
 	width: 100%;
 }
+p {
+	font-size: ms(1);
+	margin-bottom: ms(2);
+	line-height: 1.2;
+	color: $dark-grey;
+
+}
+blockquote {
+	padding: ms(1);
+	font-size: ms(3);
+	color: $dark-grey;
+	background-color: rgba($dark-blue, .4);
+	border-top: 1px solid $dark-blue;
+	border-bottom: 1px solid $dark-blue;
+	text-align: center;
+	cite {
+		font-size: ms(1);
+		font-style: italic;
+		display: block;
+		color: $dark-blue;
+		text-align: right;
+		margin-top: ms(1);
+	}
+}
+.wrapper {
+	//margin: 90px 4% 0 4%;
+	margin: 0 4%;
+
+	@include breakpoint(600px) {
+		margin: 0 4%;
+	}
+}
 
 //NAV
 .title-01 {
 	font-size: ms(4);
+	color: $dark-grey;
+	text-align: right;
+	font-family: Helvetica, Arial, sans-serif;
+	margin-bottom: ms(-1);
+	@include breakpoint(600px) {
+		text-align: left;
+	}
 }
 .title-02 {
 	font-size: ms(3);
+	color: $dark-green;
+	margin-bottom: ms(-2);
+	text-transform: uppercase;
+	font-family: Helvetica, Arial, sans-serif; 
 }
 .title-03 {
 	font-size: ms(1);
@@ -82,6 +126,33 @@ img {
 	@include breakpoint(600px) {
 		position: initial;
 	}
+}
+.nav-main__list {
+	margin-top: ms(8);
+	@include breakpoint(600px) {
+		margin-top: 0;
+	}
+}
+.nav-main__trigger {
+	position: absolute;
+	top: ms(1);
+	left: ms(1);
+	z-index: 5;
+	background-color: rgba($blue, .9);
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+}
+.nav-main__trigger-icon {
+	color: $dark-grey;
+	font-size: ms(2);
+	
+	line-height: 2.1;
+	
+	width: 25px;
+	margin: 0px auto;
+	height: 20px;
+	padding: 13px;
 }
 .is-locked {
 	position: fixed;
@@ -148,7 +219,21 @@ img {
 			background-color: $dark-orange;
 		}
 	}
-	@include breakpoint (550px) {
+	&.nav-quick--journal {
+		background-color: $cream;
+		border-color: $dark-cream;
+		&:hover {
+			background-color: lighten($cream, 5%);
+			border-color: $cream;
+			.nav-quick__icon {
+				background-color: $cream;
+			}
+		}
+		.nav-quick__icon {
+			background-color: $dark-cream;
+		}
+	}
+	@include breakpoint (730px) {
 		//display: inline-block;
 		//float: left;
 		//position: relative;
@@ -163,12 +248,12 @@ img {
 	font-size: ms(1);
 	color: $dark-grey;
 	text-decoration: none;
-	padding: ms(-1) ms(0);
+	padding: 0 0 0 ms(-6) ;
 	line-height: 1;
 	font-family: Arial, sans-serif;
 	text-transform: uppercase;
 	//padding: ms(-1);
-	@include breakpoint (550px) {
+	@include breakpoint (730px) {
 		font-size: ms(0);
 		margin: 0 auto;
 		display: block;
@@ -181,7 +266,7 @@ img {
 	background-color: $dark-blue;
 	min-height: 50px;
 	min-width: 50px;
-	@include breakpoint(550px) {
+	@include breakpoint(730px) {
 		display: block;
 		margin: 0 auto;
 		width: ms(2);
